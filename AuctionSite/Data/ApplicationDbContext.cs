@@ -12,5 +12,7 @@ namespace AuctionSite.Data
             : base(options)
         {
         }
+
+        //public DbSet<AuctionItem> AuctionItems { get; set; }
     }
 }
