@@ -40,11 +40,31 @@ namespace AuctionSite
                     Configuration.GetConnectionString("DefaultConnection")
                     )
                 );
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<IdentityUser>(SetIdentityOptions)
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        }
+
+        /// <summary>
+        /// Configures the Identity Framework. Password strength and other attributes of the users password
+        /// </summary>
+        /// <param name="options"></param>
+        private void SetIdentityOptions(IdentityOptions options)
+        {
+            //Set password requirements
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 8;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+
+            //Set lockout options
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            options.Lockout.MaxFailedAccessAttempts = 8;
+
+            //Set user options
+            options.User.RequireUniqueEmail = true;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
