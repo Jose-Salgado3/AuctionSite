@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using AuctionSite.Models;
 
 namespace AuctionSite.Controllers
 {
-    public class UserController : Controller
+    public class ProductsController : Controller
     {
         // GET: User
         public ActionResult Index()
@@ -22,16 +17,16 @@ namespace AuctionSite.Controllers
             return View();
         }
 
-        // GET: User/Create
-        public ActionResult Create()
+        // GET: User/Add
+        public ActionResult Add()
         {
             return View();
         }
 
-        // POST: User/Create
+        // POST: User/Add
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Add(IFormCollection collection)
         {
             try
             {

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.Models
 {
+    /// <summary>
+    /// The product to be added to the listing page
+    /// </summary>
     public class Product
     {
         /// <summary>

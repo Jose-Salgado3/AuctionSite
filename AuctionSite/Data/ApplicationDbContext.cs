@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using AuctionSite.Models;
 
 namespace AuctionSite.Data
 {
@@ -12,5 +13,6 @@ namespace AuctionSite.Data
             : base(options)
         {
         }
+        public DbSet<AuctionSite.Models.Product> Product { get; set; }
     }
 }
