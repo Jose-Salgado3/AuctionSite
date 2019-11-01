@@ -53,5 +53,12 @@ namespace AuctionSite.Models
         /// ie. Furniture, Appliances, Photogoraphy etc.
         /// </summary>
         public int Category { get; set; }
+
+
+        /// <summary>
+        /// The image stored of the product to be stored in the database.
+        /// Image will be stored as a byte.
+        /// </summary>
+        public byte Image { get; set; }
     }
 }
