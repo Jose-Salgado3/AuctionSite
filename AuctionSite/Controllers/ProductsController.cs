@@ -1,10 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AuctionSite.Data;
+using AuctionSite.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AuctionSite.Controllers
 {
     public class ProductsController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        //Passes DBcontext to controller with conttructor
+        public ProductsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         // GET: User
         public ActionResult Index()
         {
@@ -26,11 +37,12 @@ namespace AuctionSite.Controllers
         // POST: User/Add
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(IFormCollection collection)
+        public async Task<IActionResult> Add(Product p)
         {
             try
             {
                 // TODO: Add insert logic here
+                await ProductDb.Add(p, _context);
 
                 return RedirectToAction(nameof(Index));
             }
