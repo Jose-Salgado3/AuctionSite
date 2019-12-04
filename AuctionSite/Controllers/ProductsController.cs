@@ -2,6 +2,7 @@
 using AuctionSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace AuctionSite.Controllers
@@ -9,6 +10,8 @@ namespace AuctionSite.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+
+        public DateTime PostDate { get; private set; }
 
         //Passes DBcontext to controller with conttructor
         public ProductsController(ApplicationDbContext context)
@@ -41,6 +44,7 @@ namespace AuctionSite.Controllers
         {
             try
             {
+
                 // TODO: Add insert logic here
                 await ProductsDb.Add(p, _context);
 
