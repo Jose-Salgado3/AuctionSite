@@ -75,7 +75,7 @@ namespace AuctionSite.Models
 
         /// <summary>
         /// The image stored of the product to be stored in the database.
-        /// Image will be stored as a byte.
+        /// Image will be stored as a string in hopes to manipulate the path
         /// </summary>
         
         public string Image { get; set; }
