@@ -1,13 +1,26 @@
 ﻿using AuctionSite.Data;
 using AuctionSite.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using System.Threading.Tasks;
+
 
 namespace AuctionSite.Controllers
 {
+
     public class ProductsController : Controller
     {
+        // Private field for the hosting environment
+        private readonly IHostingEnvironment he;
+
+        //Constructor for the hosting environment
+        public ProductsController(IHostingEnvironment e)
+        {
+            he = e;
+        }
+
         private readonly ApplicationDbContext _context;
 
         //Passes DBcontext to controller with conttructor
@@ -19,6 +32,18 @@ namespace AuctionSite.Controllers
         // GET: User
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult Index(string Name, IFormFile pic)
+        {
+            ViewData["prodName"] = Name;
+            if (pic != null)
+            {
+                // GetFileName is helping to extract just the filename of the pic
+                var fileName = Path.Combine(he.WebRootPath, Path.GetFileName(pic.FileName));
+                pic.CopyTo(new FileStream(fileName, FileMode.Create));
+            }
             return View();
         }
 
