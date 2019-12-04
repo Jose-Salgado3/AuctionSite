@@ -78,23 +78,12 @@ namespace AuctionSite.Models
         /// Image will be stored as a byte.
         /// </summary>
         
-        public byte Image { get; set; }
+        public string Image { get; set; }
 
         /// <summary>
         /// The time and date that the product was posted for sale.
         /// </summary>
-        public DateTime PostDate
-        {
-            get
-            {
-                return PostDate;
-            }
-
-            set
-            {
-                PostDate = DateTime.Now;
-            }
-        }
+        public DateTime PostDate { get; set; }
         
     }
 }
