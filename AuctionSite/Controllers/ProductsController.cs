@@ -21,7 +21,7 @@ namespace AuctionSite.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             List<Product> products = await ProductsDb.GetAllProducts(_context);
-            return View();
+            return View(products);
         }
 
         // GET: User/Details/5

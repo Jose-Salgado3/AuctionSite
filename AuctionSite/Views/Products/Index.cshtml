@@ -12,6 +12,12 @@
 <br />
 
 <ul>
+    @foreach (Product p in Model)
+    {
+        <li>
+            @Html.DisplayNameFor(m => p.Description);
+        </li>
+    }
 
 
 </ul>
