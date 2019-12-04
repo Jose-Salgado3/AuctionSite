@@ -42,7 +42,7 @@ namespace AuctionSite.Controllers
             try
             {
                 // TODO: Add insert logic here
-                await ProductDb.Add(p, _context);
+                await ProductsDb.Add(p, _context);
 
                 return RedirectToAction(nameof(Index));
             }
