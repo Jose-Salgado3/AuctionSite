@@ -79,5 +79,22 @@ namespace AuctionSite.Models
         /// </summary>
         
         public byte Image { get; set; }
+
+        /// <summary>
+        /// The time and date that the product was posted for sale.
+        /// </summary>
+        public DateTime PostDate
+        {
+            get
+            {
+                return PostDate;
+            }
+
+            set
+            {
+                PostDate = DateTime.Now;
+            }
+        }
+        
     }
 }
