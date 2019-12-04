@@ -14,7 +14,7 @@ namespace AuctionSite.Data
         {
             context.Add(p);
             await context.SaveChangesAsync();
-            return p;        
+            return p;
         }
 
         /// <summary>
@@ -40,6 +40,16 @@ namespace AuctionSite.Data
                 Id = id
             };
             context.Entry(p).State = EntityState.Deleted;
+        }
+
+        public static async Task<List<Product>> GetAllProducts(ApplicationDbContext context)
+        {
+            //LINQ
+            List<Product> products = await context.Products
+                .OrderBy(p => p.Name)
+                .ToListAsync();
+
+            return products;
         }
     }
 

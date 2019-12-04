@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Product>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,5 +7,19 @@
 <p>This will be the beginning of the products page that will show all of the current offers with pagination implemented eventually
     I will go ahead and get add and delete working for now and move to displaying items after the DB is populated.
     </p>
+
 <br />
 
+<ul>
+    @foreach (Product p in Model)
+    {
+    <li>
+        @Html.DisplayFor(m => p.Id)
+        @Html.DisplayFor(m => p.Name)
+        @Html.DisplayFor(m => p.Price)
+        @Html.DisplayFor(m => p.Description)
+    </li>
+
+    }
+
+</ul>
