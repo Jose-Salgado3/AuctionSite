@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Product>
+﻿
+@model IEnumerable<Product>
 @{
     ViewData["Title"] = "Index";
 }
@@ -13,13 +14,9 @@
 <ul>
     @foreach (Product p in Model)
     {
-    <li>
-        @Html.DisplayFor(m => p.Id)
-        @Html.DisplayFor(m => p.Name)
-        @Html.DisplayFor(m => p.Price)
-        @Html.DisplayFor(m => p.Description)
-    </li>
-
+        <li>
+            "hey"
+        </li>
     }
 
 </ul>
