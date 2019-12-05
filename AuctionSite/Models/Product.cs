@@ -57,7 +57,7 @@ namespace AuctionSite.Models
         /// </summary>
         [Required]
         [Range(0,5)]
-        public int Condition { get; set; }
+        public int SelectedCondition { get; set; }
 
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace AuctionSite.Models
         /// ie. Furniture, Appliances, Photogoraphy etc.
         /// </summary>
         [Range(0,250)]
-        public int Category { get; set; }
+        public int SelectedCategory { get; set; }
 
 
         /// <summary>
