@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionSite.Models
@@ -78,6 +80,7 @@ namespace AuctionSite.Models
         /// Image will be stored as a byte.
         /// </summary>
         
-        public String Image { get; set; }
+        [NotMappedAttribute]
+        public IFormFile Image { get; set; }
     }
 }
