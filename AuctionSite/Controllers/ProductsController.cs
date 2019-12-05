@@ -3,6 +3,7 @@ using AuctionSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AuctionSite.Controllers
@@ -10,6 +11,7 @@ namespace AuctionSite.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private object _appEnvironment;
 
         //Passes DBcontext to controller with conttructor
         public ProductsController(ApplicationDbContext context)
@@ -52,6 +54,35 @@ namespace AuctionSite.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        public IActionResult Upload_Image()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Upload_Image(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return Content("file not selected");
+            }
+
+            //Get path
+            string path_Root = _appEnvironment.WebRootPath;
+            string path_to_Images = path_Root + "\\User_Files\\Images\\" + file.FileName;
+
+            //Copy File to target
+            using (var stream = new FileStream(path_to_Images, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            //Output
+            ViewData["FilePath"] = path_to_Images;
+            return View();
         }
 
         // GET: User/Edit/5
