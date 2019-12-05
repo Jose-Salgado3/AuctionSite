@@ -14,7 +14,7 @@ namespace AuctionSite.Data
         {
             context.Add(p);
             await context.SaveChangesAsync();
-            return p;        
+            return p;
         }
 
         /// <summary>
@@ -40,6 +40,23 @@ namespace AuctionSite.Data
                 Id = id
             };
             context.Entry(p).State = EntityState.Deleted;
+        }
+
+
+        /// <summary>
+        /// This method contacts the database and grabs every instance of product that it can find
+        /// and stores them in a list.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns>A List of products retrieved from the database</returns>
+        public static async Task<List<Product>> GetAllProducts(ApplicationDbContext context)
+        {
+            //LINQ
+            List<Product> products = await context.Products
+                .OrderBy(p => p.Name)
+                .ToListAsync();
+
+            return products;
         }
     }
 
