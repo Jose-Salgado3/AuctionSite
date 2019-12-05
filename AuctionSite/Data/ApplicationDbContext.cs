@@ -13,6 +13,6 @@ namespace AuctionSite.Data
             : base(options)
         {
         }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

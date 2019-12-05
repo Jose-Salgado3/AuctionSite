@@ -2,6 +2,7 @@
 using AuctionSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AuctionSite.Controllers
@@ -17,9 +18,10 @@ namespace AuctionSite.Controllers
         }
 
         // GET: User
-        public ActionResult Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View();
+            List<Product> products = await ProductsDb.GetAllProducts(_context);
+            return View(products);
         }
 
         // GET: User/Details/5

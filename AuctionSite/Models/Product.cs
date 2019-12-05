@@ -78,6 +78,6 @@ namespace AuctionSite.Models
         /// Image will be stored as a byte.
         /// </summary>
         
-        public byte Image { get; set; }
+        public String Image { get; set; }
     }
 }
