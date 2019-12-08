@@ -2,9 +2,11 @@
 using AuctionSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Server;
 
 namespace AuctionSite.Controllers
 {
@@ -40,12 +42,23 @@ namespace AuctionSite.Controllers
         // POST: User/Add
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(Product p)
+        public async Task<IActionResult> Add(Product p, IFormFile Image)
         {
             try
             {
+                string path = UploadImage(Image);
+                if (path.Equals("-1"))
+                {
+
+                }
+                else 
+                {
+
+                    await ProductsDb.Add(p, _context);
+                    ViewBag.msg="Data added";
+                }
                 // TODO: Add insert logic here
-                await ProductsDb.Add(p, _context);
+                
 
                 return RedirectToAction(nameof(Index));
             }
@@ -53,6 +66,43 @@ namespace AuctionSite.Controllers
             {
                 return View();
             }
+        }
+
+        public string UploadImage(IFormFile file)
+        {
+            Random r = new Random();
+            string path = "-1";
+            int random = r.Next();
+            if (file != null && file.Length > 0)
+            {
+                string extension = Path.GetExtension(file.FileName);
+                if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg")
+                {
+                    try
+                    {
+                        path = Path.Combine(Server.MapPath("~/Content/upload"), random + Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+                        path = "~/Content/upload" + random + Path.GetFileName(file.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        path = "-1";
+                    }
+                }
+                else
+                {
+                    Response.WriteAsync("<script>alert('Only jpg, jpeg or png formats are accepted'); </script>");
+                }
+            }
+            else
+            {
+                Response.WriteAsync("<script>alert('Please select a file'); </script>");
+                path = "-1";
+            }
+
+            return path;
+
+
         }
 
         // GET: User/Edit/5
