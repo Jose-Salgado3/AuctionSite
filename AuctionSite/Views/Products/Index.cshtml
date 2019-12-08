@@ -16,17 +16,20 @@
     <ul>
         @foreach (Product p in Model)
         {
-
-            <b>@Html.DisplayTextFor(m => p.Name)</b>
             //Will also look to display image here and move to a gallery style layout
+            <b>@Html.DisplayTextFor(m => p.Name)</b>
+
             <li>
                 @Html.DisplayTextFor(m => p.Price)
-                @Html.DisplayTextFor(m => p.Description)
-                @Html.DisplayTextFor(m => p.Image)
             </li>
 
-        }
-</div>
-<br />
+            <li>
+                @Html.DisplayTextFor(m => p.Description)
+            </li>
 
-</ul>
+            @Html.DisplayTextFor(m => p.Image)
+
+        }      
+    </ul>
+    <br />
+</div>
