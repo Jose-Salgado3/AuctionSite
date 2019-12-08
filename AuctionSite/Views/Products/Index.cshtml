@@ -12,19 +12,16 @@
 
 <br />
 
-<div class="list-group-item">
+<div class="grid-container">
     <ul>
         @foreach (Product p in Model)
         {
+            
             //Will also look to display image here and move to a gallery style layout
             <b>@Html.DisplayTextFor(m => p.Name)</b>
 
             <li>
                 @Html.DisplayTextFor(m => p.Price)
-            </li>
-
-            <li>
-                @Html.DisplayTextFor(m => p.Description)
             </li>
 
             @Html.DisplayTextFor(m => p.Image)
