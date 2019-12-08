@@ -9,6 +9,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20191208192144_back_to_datastructure.cs" />
     <Compile Remove="Data\Migrations\20191208192144_back_to_datastructure.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191208193101_fixDb.cs" />
+    <Compile Remove="Data\Migrations\20191208193101_fixDb.Designer.cs" />
   </ItemGroup>
 
 
@@ -20,6 +22,7 @@
 
 
   <ItemGroup>
+    <Folder Include="Data\Migrations\" />
     <Folder Include="Pages\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />

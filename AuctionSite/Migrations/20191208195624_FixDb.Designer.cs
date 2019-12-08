@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AuctionSite.Data.Migrations
+namespace AuctionSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191203101755_add_product")]
-    partial class add_product
+    [Migration("20191208195624_FixDb")]
+    partial class FixDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,8 +37,6 @@ namespace AuctionSite.Data.Migrations
 
                     b.Property<bool>("FirmPrice");
 
-                    b.Property<byte>("Image");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(75);
@@ -49,7 +47,7 @@ namespace AuctionSite.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
